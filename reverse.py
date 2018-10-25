@@ -1,5 +1,5 @@
 
-# version one using loop
+# version one using loop it is still on progress not working properly yet
 def reverse_words_one(word):
     start = 0
     end = len(word)-1
