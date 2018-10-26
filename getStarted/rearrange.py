@@ -5,7 +5,7 @@ import random
 import sys
 
 ''' 
-
+    returns randomly shuffled list and keeps the original list order
 '''
 def randomize_list(original_list):
     shuffled_list = original_list[:]
