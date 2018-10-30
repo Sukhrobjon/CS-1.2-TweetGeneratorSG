@@ -17,20 +17,29 @@ if __name__ == '__main__':
     original_list = sys.argv[1:]
     print(' '.join(randomize_list(original_list)))
 
-# '_' can be used when you are using this as a iterator and not using 
-# it anywhere
+
+
+
+
+
+
+
 '''
-    use comments, learn when use while or for loop
+    **Side notes: for the class 2 and code review for rearrange the words**
+    1. use comments, learn when use while or for loop
     # copies whole list to output_list so when we modify output_list 
-    # the input_list doesnt change because of '[:]' symbol
+    # the input_list doesnt change because of '[:]' symbol(means copying from 0th 
+    # to the last element of the list)
+    
     input_list = []
     output_list = input_list[:]
 
-    # to get rid of the \n line at the end of the file we can use 
-    # split(), 
+    to get rid of the '\n' line at the end of the file we can use split(), 
 
-    # open the file one time creating readFunction()
+    - open the file one time creating readFunction()
 
+    - '_' can be used when you are iteratating smth with for loop and you dont have
+      to use specific variable for that
 
 '''
   
