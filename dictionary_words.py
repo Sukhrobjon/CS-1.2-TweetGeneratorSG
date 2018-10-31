@@ -6,9 +6,11 @@ import sys
     list of the words 
 '''
 def read_file():
-    words = open("/usr/share/dict/words", "r").read().split('\n')
-    # words.close() i dont know where tho close the file?
+    with open("/usr/share/dict/words") as file:
+        words = file.read().split('\n')
     return words
+    
+        
 
 '''
     makes a random sentence out of the read_file() with specific number of words
@@ -28,3 +30,7 @@ if __name__ == '__main__':
     
     print(make_random_sentence(num_words))
     
+
+'''
+timeit built in banch mark library
+'''
