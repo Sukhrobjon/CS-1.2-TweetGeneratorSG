@@ -1,5 +1,6 @@
 import random
 import sys
+import timeit
 
 '''
     opens the file and read from it line by line and return to 
@@ -26,9 +27,10 @@ def make_random_sentence(num_words):
 
 if __name__ == '__main__':
     # number of words user want grab from the file
-    num_words = sys.argv[1]
     
+    num_words = sys.argv[1]
     print(make_random_sentence(num_words))
+    
     
 
 '''
