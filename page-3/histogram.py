@@ -25,5 +25,5 @@ def histogram():
     return count
 
 
-print(histogram().items())
+print(histogram())
 
