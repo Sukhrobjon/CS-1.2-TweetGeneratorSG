@@ -1,4 +1,5 @@
 import collections
+import re
 '''
 In this tutorial, we'll be writing a program which, given a source body of text,
 can perform operations to answer questions such as:
@@ -23,8 +24,8 @@ histogram_dictionary = [{'one': 1, 'blue': 1, 'two': 1, 'fish': 4, 'red': 1}]
 '''
 def read_file():
     with open('source_text.txt') as file:
-        source_string = file.read().split(' ')
-    return source_string
+        word_list = file.read().split(' ')
+    return word_list
 
 '''
     counts the frequency of each words using counter library
@@ -34,7 +35,10 @@ def histogram(source_text):
     count = collections.Counter(source_text)
     return count
 
+
+
 def histogram_dict(source_text):
+    '''counts the frequency of each words and returns dictionary'''
     histogram = {}
 
     for word in source_text:
@@ -45,10 +49,11 @@ def histogram_dict(source_text):
     return histogram 
 
 
-'''
-    Counts the each word frequency using list of list method
-'''
+
 def histogram_list(source_text):
+    
+    '''Counts the each word frequency and returns list of list '''
+    source_text.sort()
     histogram = []
     current_word = None
     for word in source_text:
@@ -59,16 +64,39 @@ def histogram_list(source_text):
             current_word = word
     return histogram
 
+
+def histogram_tuple(source_text):
+    '''Counts the each word frequency and returns list of list '''
+    source_text.sort()
+    histogram = []
+    current_word = None
+    for word in source_text:
+        if word == current_word:
+            histogram[-1] = (word, histogram[-1][1]+1)
+        else:
+            histogram.append((word, 1))
+            current_word = word
+    return histogram
+
 # returns number of unique words in the source text 
-def unique_words(source_text):
-    # return len(set(histogram(source_text)))
-    # return len(histogram(source_text).keys)
-    return len(histogram_dict(source_text))
-# print(histogram())
+def unique_words(histogram):
+    return len(histogram)
+
+def frequency(word, histogram):
+    count = 0
+    if word in histogram:
+        count = histogram[word]
+    else:
+        print("WORD NOT FOUND!!!")
+    return count
+    
+
 
 if __name__ == "__main__":
     source_text = read_file()
-    # print(histogram(source_text))
-    # print(histogram_list(source_text))
-    print(unique_words(source_text))
+    unique_words = unique_words(histogram_dict(source_text))
+    print("Number of unique words {}".format(unique_words))
     print(histogram_dict(source_text))
+    print(histogram_list(source_text))
+    print(histogram_tuple(source_text))
+    print(frequency('hello', histogram_dict(source_text)))
