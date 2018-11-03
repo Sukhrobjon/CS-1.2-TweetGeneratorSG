@@ -82,6 +82,7 @@ def histogram_tuple(source_text):
 def unique_words(histogram):
     return len(histogram)
 
+# returns number of words in the histogram  
 def frequency(word, histogram):
     count = 0
     if word in histogram:
@@ -94,9 +95,9 @@ def frequency(word, histogram):
 
 if __name__ == "__main__":
     source_text = read_file()
-    unique_words = unique_words(histogram_dict(source_text))
+    unique_words = unique_words(histogram_tuple(source_text))
     print("Number of unique words {}".format(unique_words))
     print(histogram_dict(source_text))
     print(histogram_list(source_text))
     print(histogram_tuple(source_text))
-    print(frequency('hello', histogram_dict(source_text)))
+    print(frequency('fish', histogram_dict(source_text)))
