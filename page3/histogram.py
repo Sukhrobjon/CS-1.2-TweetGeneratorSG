@@ -20,12 +20,20 @@ histogram_dictionary = [{'one': 1, 'blue': 1, 'two': 1, 'fish': 4, 'red': 1}]
 '''
 
 '''
-    reads the file and return a list of the the words of that file
+    reads the file and return a list of the words from the file
 '''
 def read_file():
     with open('source_text.txt') as file:
-        word_list = file.read().split(' ')
-    return word_list
+        words_list = file.read()
+    return words_list
+
+
+'''returns only words lower case and ignore all other operations'''
+def polishishing_file(source_text):
+    words = re.sub("[^a-zA-Z'\\-]", " ", source_text)
+    return words.lower().split()
+
+
 
 '''
     counts the frequency of each words using counter library
@@ -38,7 +46,7 @@ def histogram(source_text):
 
 
 def histogram_dict(source_text):
-    '''counts the frequency of each words and returns dictionary'''
+    '''Counts the frequency of each words and returns dictionary'''
     histogram = {}
 
     for word in source_text:
@@ -66,6 +74,7 @@ def histogram_list(source_text):
 
 
 def histogram_tuple(source_text):
+    
     '''Counts the each word frequency and returns list of list '''
     source_text.sort()
     histogram = []
@@ -95,9 +104,10 @@ def frequency(word, histogram):
 
 if __name__ == "__main__":
     source_text = read_file()
-    unique_words = unique_words(histogram_tuple(source_text))
+    words_list = polishishing_file(source_text)
+    print(histogram_dict(words_list))
+    print(histogram_list(words_list))
+    print(histogram_tuple(words_list))
+    unique_words = unique_words(histogram_tuple(words_list))
     print("Number of unique words {}".format(unique_words))
-    print(histogram_dict(source_text))
-    print(histogram_list(source_text))
-    print(histogram_tuple(source_text))
-    print(frequency('fish', histogram_dict(source_text)))
+    print(frequency('the', histogram_dict(words_list)))
