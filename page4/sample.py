@@ -1,6 +1,7 @@
 import random
-import sys
-
+import math
+import words_frequency
+import timeit
 # from histogram import *
 
 
@@ -10,6 +11,6 @@ def get_random_word(histogram):
     return word
 
 
-# if __name__ == "__main__":
+
     
 
