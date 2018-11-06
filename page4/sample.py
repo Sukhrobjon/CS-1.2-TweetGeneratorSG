@@ -22,5 +22,6 @@ def weighted_choice(histogram):
 
 
 histogram = [['blue', 1], ['fish', 4], ['one', 1], ['red', 1], ['two', 1]]
-words = zip(*histogram)
-print(weighted_choice(words[0]))
+words = zip(*)
+print(words[0])
+# print(weighted_choice(words[0]))

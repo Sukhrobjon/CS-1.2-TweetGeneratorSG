@@ -29,7 +29,7 @@ def read_file():
 
 
 '''returns only words lower case and ignore all other operations'''
-def polishishing_file(source_text):
+def getting_words(source_text):
     words = re.sub("[^a-zA-Z'\\-]", " ", source_text)
     return words.lower().split()
 
@@ -104,7 +104,7 @@ def frequency(word, histogram):
 
 if __name__ == "__main__":
     source_text = read_file()
-    words_list = polishishing_file(source_text)
+    words_list = getting_words(source_text)
     print(histogram_dict(words_list))
     print(histogram_list(words_list))
     print(histogram_tuple(words_list))
