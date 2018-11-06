@@ -23,7 +23,7 @@ histogram_dictionary = [{'one': 1, 'blue': 1, 'two': 1, 'fish': 4, 'red': 1}]
     reads the file and return a list of the words from the file
 '''
 def read_file():
-    with open('source_text.txt') as file:
+    with open('source_text2.txt') as file:
         words_list = file.read()
     return words_list
 
@@ -110,4 +110,4 @@ if __name__ == "__main__":
     print(histogram_tuple(words_list))
     unique_words = unique_words(histogram_tuple(words_list))
     print("Number of unique words {}".format(unique_words))
-    print(frequency('the', histogram_dict(words_list)))
+    print(frequency('fish', histogram_dict(words_list)))

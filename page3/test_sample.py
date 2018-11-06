@@ -5,9 +5,7 @@ from histogram import *
 
 
 def get_random_word(histogram):
-    source_text = read_file()
-    histogram = 
-    return 
+    words 
 
 
 if __name__ == "__main__":

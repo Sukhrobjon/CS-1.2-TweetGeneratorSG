@@ -10,9 +10,9 @@ def reverse_words_one(word):
     return word
 
 # version two using slicing notation
-def reverse_words_two(word):
+def reverse_words(word):
     return word[::-1]
 
 word = 'Sukhrob'
 
-print(reverse_words_two(word))
+print(reverse_words(word))
