@@ -1,18 +1,4 @@
-# import random
-# import math
-# import words_frequency
-# import timeit
-# # from histogram import *
-
-
-# def get_random_word(histogram):
-    
-#     word = random.choice(histogram)
-#     return word
-
-
 import random
-
 import words_frequency
 
 def weighted_choice(histogram):
@@ -21,7 +7,16 @@ def weighted_choice(histogram):
     return word
 
 
-histogram = [['blue', 1], ['fish', 4], ['one', 1], ['red', 1], ['two', 1]]
-words = zip(*)
-print(words[0])
-# print(weighted_choice(words[0]))
+# homework write down the answers for the questions on page 6
+if __name__ == '__main__':
+    histogram = [['blue', 1], ['fish', 4], ['one', 1], ['red', 1], ['two', 1]]
+    words = list(zip(*histogram))
+    # print(list(words[1]))
+    
+    iteration = 10
+    result = {}
+    while iteration > 0:
+        current_word = weighted_choice(words[0])
+        result[current_word] = result.get(current_word, 0) + 1
+        iteration = iteration - 1
+    print(result)
