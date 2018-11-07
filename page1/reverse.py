@@ -1,18 +1,11 @@
 
-# version one using loop it is still on progress not working properly yet
-def reverse_words_one(word):
-    start = 0
-    end = len(word)-1
-    while start < end:
-        word[start], word[end] = word[end], word[start]
-        start += 1
-        end -= 1
-    return word
-
 # version two using slicing notation
 def reverse_words(word):
     return word[::-1]
-
-word = 'Sukhrob'
-
+def reverse_sentence(sentence):
+    words = sentence.split()
+    return ' '.join(reversed(words))
+word = 'singleWord'
+sentence = "This is a sentence!"
 print(reverse_words(word))
+print(reverse_sentence(sentence))
