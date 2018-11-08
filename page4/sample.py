@@ -28,7 +28,7 @@ def sample(histogram_dict, iteration):
     of words and the frequency as key and value pair'''
     result = {}
     while iteration > 0:
-        current_word = (weighted_choice(histogram_dict))
+        current_word = (weighted_random_choice(histogram_dict))
         result[current_word] = result.get(current_word, 0) + 1
         iteration = iteration - 1
     return result
