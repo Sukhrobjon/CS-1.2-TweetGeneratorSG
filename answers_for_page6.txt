@@ -1,0 +1,23 @@
+Questions:
+1. What are the key features of the application? Are these clearly separated 
+into their own files, classes, and/or modules?
+2. Are the names of files, modules, functions, and variables appropriate and 
+accurate? Would a new programmer be able to understand the names without too 
+much contextual knowledge?
+3. What are the scopes of variables and are they appropriate for their use 
+case? If there are global variables, why are they needed?
+4. Are the functions small and clearly specified, with as few side effects 
+as possible?
+5. Are there functions that could be better organized in an Object-Oriented 
+Programming style by defining them as methods of a class?
+6. Can files be used as both modules and as scripts?
+7. Do modules all depend on each other or can they be used independently?
+
+Answers:
+1. Key features:
+    reading the files
+    creating histogram
+    generating the sentence out of random words according to weight of the words
+   Yes they are separated 
+2. Some of the functions are not clearly picked. I am optimizing the code one 
+by one everytime I see the issue
