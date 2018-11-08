@@ -1,12 +1,15 @@
 import random
-import words_frequency
 import numpy as np
 
-def cumulative_weight(histogram_dict):
+# this is on progress for  usage of list or tuple
+def cumulative_weight(histogram):
+    '''Takes a list and return a cumulative sum of the list'''
     cumulative_list = np.cumsum(histogram)
     return cumulative_list
 
-def weighted_choice(histogram_dict):
+def weighted_random_choice(histogram_dict):
+    '''Gets random number according to weighting of the word'''
+    
     cumulative_num = 0
     sum_values = sum(histogram_dict.values())
     ran_num = random.randint(0, sum_values - 1)
@@ -19,20 +22,22 @@ def weighted_choice(histogram_dict):
             continue
     return histogram_dict
 
-# homework write down the answers for the questions on page 6
-if __name__ == '__main__':
-    histogram = [['blue', 1], ['fish', 4], ['one', 1], ['red', 1], ['two', 1]]
-    histogram_dict = {'one': 1, 'fish': 4, 'two': 1, 'red': 1, 'blue': 1}
-    # creates a list of tuple containg putting in row and collumns 
-    words = list(zip(*histogram))  
-    
-    # print(words)
-    my_list = [1, 4, 1, 1, 1]
-    # print(cumulative_weight(my_list))
-    iteration = 10000
+
+def sample(histogram_dict, iteration):
+    '''Keep track of the words and returns a dictionry
+    of words and the frequency as key and value pair'''
     result = {}
     while iteration > 0:
         current_word = (weighted_choice(histogram_dict))
         result[current_word] = result.get(current_word, 0) + 1
         iteration = iteration - 1
-    print(result)
+    return result
+
+
+if __name__ == '__main__':
+    
+    histogram_dict = {'one': 1, 'fish': 4, 'two': 1, 'red': 1, 'blue': 1}
+    print("This should work as a dictionary")
+    print(sample(histogram_dict, 100))
+
+    
