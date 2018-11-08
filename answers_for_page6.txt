@@ -21,3 +21,11 @@ Answers:
    Yes they are separated 
 2. Some of the functions are not clearly picked. I am optimizing the code one 
 by one everytime I see the issue
+
+
+class Notes:
+print was a just a key word in python2 
+unlikely in python 3 it is a function
+
+7/3 is float
+7//3 is intiger division operator
