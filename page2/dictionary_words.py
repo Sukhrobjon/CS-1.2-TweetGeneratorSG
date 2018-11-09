@@ -13,11 +13,9 @@ def read_file():
     
 
 def make_random_sentence(num_words):
-'''
-    makes a random sentence out of the read_file() with specific number of words
+    '''makes a random sentence out of the read_file() with specific number of words
     according tho user input. And returns to sentence splinting the words by single 
-    space
-'''
+    space'''
     new_sentence = []
     words = read_file()
     for _ in range(int(num_words)):
@@ -25,8 +23,7 @@ def make_random_sentence(num_words):
     return(''.join(new_sentence))
 
 if __name__ == '__main__':
-    # number of words user want grab from the file
-    
+
     num_words = sys.argv[1]
     print(make_random_sentence(num_words))
     
