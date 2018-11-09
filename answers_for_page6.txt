@@ -29,3 +29,16 @@ unlikely in python 3 it is a function
 
 7/3 is float
 7//3 is intiger division operator
+
+When organizing the files pay attention to be not depended on a lot files
+one or two dependicies are good
+
+How OOP Actually works 
+
+theres is data and fundtion
+prameters -> function -> return value
+Program writes                           Computer creates      
+Class=>                                  Object 
+Data decleartion
+function decleartion 1
+function decleartion 2

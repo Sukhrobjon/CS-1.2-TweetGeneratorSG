@@ -11,14 +11,13 @@ def read_file():
         words = file.read().split('\n')
     return words
     
-        
 
+def make_random_sentence(num_words):
 '''
     makes a random sentence out of the read_file() with specific number of words
     according tho user input. And returns to sentence splinting the words by single 
     space
 '''
-def make_random_sentence(num_words):
     new_sentence = []
     words = read_file()
     for _ in range(int(num_words)):
