@@ -38,6 +38,6 @@ if __name__ == '__main__':
     
     histogram_dict = {'one': 1, 'fish': 4, 'two': 1, 'red': 1, 'blue': 1}
     print("This should work as a dictionary")
-    print(sample(histogram_dict, 10000))
+    print(sample(histogram_dict, 100000))
 
     

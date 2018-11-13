@@ -91,14 +91,13 @@ def histogram_tuple(source_text):
 def unique_words(histogram):
     return len(histogram)
 
-# returns number of words in the histogram  
+# returns number of words in the dictionary type histogram, if not found returns 0  
 def frequency(word, histogram):
-    count = 0
     if word in histogram:
-        count = histogram[word]
+        return histogram[word]
     else:
-        print("WORD NOT FOUND!!!")
-    return count
+        return 0
+    
     
 
 
