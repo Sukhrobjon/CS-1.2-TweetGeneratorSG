@@ -1,5 +1,6 @@
 import collections
 import re
+from sample import weighted_random_choice
 '''
 In this tutorial, we'll be writing a program which, given a source body of text,
 can perform operations to answer questions such as:
@@ -24,18 +25,28 @@ histogram_dictionary = [{'one': 1, 'blue': 1, 'two': 1, 'fish': 4, 'red': 1}]
 '''
 
 
-def read_file():
-    with open('source_text.txt') as file:
-        words_list = file.read()
-    return words_list
+def read_file(txt):
+    f = open(txt, "r")
+    contents = f.read()
+    f.close()
+    contents = contents.lower()
+    contents = strip_pun(contents)
+    contents = contents.split()
+
+    return contents
 
 
 '''returns only words lower case and ignore all other operations'''
 
 
-def polishishing_file(source_text):
-    words = re.sub("[^a-zA-Z'\\-]", " ", source_text)
-    return words.lower().split()
+def strip_pun(string):
+    punc = '''!()-[]{};:"\<>./?@#$%^&*_~1234567890'''
+    no_punc = ""
+    for char in string:
+        if char not in punc:
+            no_punc += char
+
+    return no_punc
 
 
 '''
@@ -107,11 +118,25 @@ def frequency(word, histogram):
 
 
 if __name__ == "__main__":
-    source_text = read_file()
-    words_list = polishishing_file(source_text)
-    print(histogram_dict(words_list))
-    print(histogram_list(words_list))
-    print(histogram_tuple(words_list))
-    unique_words = unique_words(histogram_tuple(words_list))
-    print("Number of unique words {}".format(unique_words))
-    print(frequency('the', histogram_dict(words_list)))
+    source_text = read_file('source_text.txt')
+    
+    histogram = histogram_dict(source_text)
+    print(histogram_dict(source_text))
+    i = 0
+    sentence = []
+    while i < 10:
+        sentence.append(weighted_random_choice(histogram))
+        i += 1
+
+    print(sentence)
+    
+
+
+
+
+
+    # print(histogram_list(words_list))
+    # print(histogram_tuple(words_list))
+    # unique_words = unique_words(histogram_tuple(words_list))
+    # print("Number of unique words {}".format(unique_words))
+    # print(frequency('the', histogram_dict(words_list)))
