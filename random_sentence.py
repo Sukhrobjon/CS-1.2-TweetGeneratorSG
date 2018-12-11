@@ -19,7 +19,7 @@ def make_random_sentence(num_words):
     space'''
     source = 'source.txt'
     new_sentence = []
-    his = weighted_random_choice()
+    # his = weighted_random_choice()
     words = read_file(source)
     for _ in range(int(num_words)):
         new_sentence.append(words[random.randint(0, len(words))] + " ")
