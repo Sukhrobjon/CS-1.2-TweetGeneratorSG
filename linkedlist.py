@@ -19,6 +19,7 @@ class LinkedList(object):
         """Initialize this linked list and append the given items, if any."""
         self.head = None  # First node
         self.tail = None  # Last node
+        self.count = 0
         # Append given items
         if items is not None:
             for item in items:
@@ -57,14 +58,15 @@ class LinkedList(object):
         """
         Return the length of this linked list by traversing its nodes.
         Running time: worst case O(n) if traversing nodes,
-        best case O(1) if using .size property
+        best case O(1) if using .count property
         """
-        count = 0
-        current = self.head
-        while(current != None):
-            count += 1
-            current = current.next
-        return count
+        # count = 0
+        # current = self.head
+        # while(current != None):
+        #     count += 1
+        #     current = current.next
+        # return count
+        return self.count
 
     def append(self, item):
         """
@@ -82,6 +84,7 @@ class LinkedList(object):
         else:
             self.tail.next = last_node
             self.tail = self.tail.next
+        self.count +=1
 
     def prepend(self, item):
         """
@@ -99,6 +102,7 @@ class LinkedList(object):
         else:
             new_head.next = self.head
             self.head = new_head
+        self.count += 1
 
     def find(self, quality):
         """
@@ -116,7 +120,8 @@ class LinkedList(object):
         return None
 
     def delete(self, item):
-        """Delete the given item from this linked list, or raise ValueError.
+        """
+        Delete the given item from this linked list, or raise ValueError.
         Best case running time: O(1) if looking for item at or near head
         Worst case running time: O(n) if looking for item in the middle 
         or near tail or not present in the linked list
@@ -127,6 +132,7 @@ class LinkedList(object):
         prev_node = None
         while cur_node is not None:
             if cur_node.data == item:
+                self.count -= 1
                 if cur_node.next is None:
                     self.tail = prev_node
                 if prev_node is not None:
@@ -137,8 +143,19 @@ class LinkedList(object):
                     return self.head
             prev_node = cur_node
             cur_node = cur_node.next
+        
         raise ValueError('Item not found: {}'.format(item))
+    
 
+    def replace(self, old_item, new_item):
+        """Run time: O(n) since we need to iterate through all nodes"""
+        current = self.head
+        while current is not None:
+            if current.data == old_item:
+                current.data = new_item
+                return current.data
+            current = current.next
+        raise ValueError('Item not found: {}'.format(old_item))
 
 def test_linked_list():
     ll = LinkedList()
