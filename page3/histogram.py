@@ -95,7 +95,7 @@ def sort_by_key(histogram):
     elif type(histogram) == list:
         return sorted(histogram, key=lambda x: x[0])
     
-def sort_hist_val(histogram):
+def sort_hist_value(histogram):
     """Sort the histogram by the values, in ascending order."""
     if type(histogram) == dict:
         return sorted(histogram.items(), key=lambda x: x[1], reverse=True)
@@ -126,5 +126,5 @@ if __name__ == "__main__":
     new_source = read_file('source_text.txt')
     words = getting_words(new_source)
     # print(sort_by_key(histogram_dict(words)))
-    print(sort_hist_val(histogram_dict(words[:100])))
-    write_to_file(sort_hist_val(histogram_dict(words)))
+    print(sort_hist_value(histogram_dict(words[:100])))
+    write_to_file(sort_hist_value(histogram_dict(words)))
