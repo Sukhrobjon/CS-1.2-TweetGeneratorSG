@@ -13,7 +13,7 @@ def markov(txt):
             m_chain[word] = Dictogram(fol_word)
     return m_chain
 
-x = 'one fish two fish blue fish red fish one fish'
-txt = x.split()
-# txt = read_file('peace.txt')
+# x = 'one fish, two. fish! blue + fish red fish one fish'
+# txt = x.split()
+txt = read_file('fish_example.txt')
 print(markov(txt))
