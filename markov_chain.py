@@ -1,5 +1,5 @@
 from dictogram  import Dictogram
-
+from cleanup import read_file, polishing_text 
 def markov(txt):
     m_chain = {}
     for word in txt[:-1]:
@@ -15,4 +15,5 @@ def markov(txt):
 
 x = 'one fish two fish blue fish red fish one fish'
 txt = x.split()
+# txt = read_file('peace.txt')
 print(markov(txt))

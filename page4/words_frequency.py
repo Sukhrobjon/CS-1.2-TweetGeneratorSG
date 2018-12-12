@@ -1,6 +1,6 @@
 import collections
 import re
-from sample import weighted_random_choice
+
 '''
 In this tutorial, we'll be writing a program which, given a source body of text,
 can perform operations to answer questions such as:
@@ -39,10 +39,11 @@ def read_file(txt):
 '''returns only words lower case and ignore all other operations'''
 
 
-def strip_pun(string):
-    punc = '''!()-[]{};:"\<>./?@#$%^&*_~1234567890'''
+def strip_pun(txt):
+    # punc = '''!()-[]{};:"\<>./?@#$%^&*_~1234567890'''
+    punc = '''!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~'''
     no_punc = ""
-    for char in string:
+    for char in txt:
         if char not in punc:
             no_punc += char
 

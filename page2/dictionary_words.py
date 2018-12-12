@@ -1,21 +1,23 @@
 import random
 import sys
-import timeit
 
-'''
+
+def read_file(source):
+    '''
     opens the file and read from it line by line and return to 
     list of the words 
-'''
-def read_file(source):
+    '''
     with open(source) as file:
         words = file.read().split('\n')
     return words
     
 
 def make_random_sentence(num_words):
-    '''makes a random sentence out of the read_file() with specific number of words
+    '''
+    makes a random sentence out of the read_file() with specific number of words
     according tho user input. And returns to sentence splinting the words by single 
-    space'''
+    space
+    '''
     source = '/usr/share/dict/words'
     new_sentence = []
     words = read_file(source)
@@ -30,7 +32,3 @@ if __name__ == '__main__':
     print(make_random_sentence(num_words))
     
     
-
-'''
-timeit built in banch mark library
-'''

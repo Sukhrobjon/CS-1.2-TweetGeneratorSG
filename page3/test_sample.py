@@ -1,5 +1,5 @@
 import random
-import histogram
+from histogram import *
 import numpy as np
 
 # this is on progress

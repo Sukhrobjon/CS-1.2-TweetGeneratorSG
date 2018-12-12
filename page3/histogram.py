@@ -10,14 +10,15 @@ histogram_dictionary = [{'one': 1, 'blue': 1, 'two': 1, 'fish': 4, 'red': 1}]
 '''
     reads the file and return a list of the words from the file
 '''
-def read_file():
-    with open('source_text.txt') as file:
+def read_file(txt):
+    with open(txt) as file:
         words_list = file.read()
     return words_list
 
 
-'''returns only words lower case and ignore all other operations'''
+
 def getting_words(source_text):
+    '''returns only words lower case and ignore all other operations'''
     words = re.sub("[^a-zA-Z'\\-]", " ", source_text)
     return words.lower().split()
 
@@ -90,7 +91,10 @@ def frequency(word, histogram):
 
 
 if __name__ == "__main__":
-    source_text = read_file()
+    fish = 'one fish, two. fish! red fish blue fish +  1111 !!!!'
+    # source_text = read_file('source_text.txt')
+    source_text = fish
+    
     words_list = getting_words(source_text)
     print(histogram_dict(words_list)) # histogram with dictionary
     # print(histogram_list(words_list))

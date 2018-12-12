@@ -1,19 +1,18 @@
 def read_file(txt):
-    f = open(txt, "r")
-    contents = f.read()
-    f.close()
+    with open(txt) as file:
+        contents = file.read()
     contents = contents.lower()
-    contents = strip_pun(contents)
+    contents = polishing_text(contents)
     contents = contents.split()
 
     return contents
 
 
-def strip_pun(string):
+def polishing_text(string):
     punc = '''!()-[]{};:"\<>./?@#$%^&*_~1234567890'''
+#     punc = '''!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~+'''
     no_punc = ""
     for char in string:
         if char not in punc:
             no_punc += char
-
     return no_punc
