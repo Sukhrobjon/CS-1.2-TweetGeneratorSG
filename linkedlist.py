@@ -127,7 +127,6 @@ class LinkedList(object):
         prev_node = None
         while cur_node is not None:
             if cur_node.data == item:
-                # self.lengths -= 1
                 if cur_node.next is None:
                     self.tail = prev_node
                 if prev_node is not None:
