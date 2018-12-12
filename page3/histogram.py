@@ -19,7 +19,7 @@ def read_file(txt):
 
 def getting_words(source_text):
     '''returns only words lower case and ignore all other operations'''
-    words = re.sub("[^a-zA-Z'\\-]", " ", source_text)
+    words = re.sub("[^a-zA-Z'\-]", " ", source_text)
     return words.lower().split()
 
 
@@ -87,18 +87,44 @@ def frequency(word, histogram):
     else:
         return 0
     
-    
 
+def sort_by_key(histogram):
+    """Sort the histogram by the keys, alphabetically."""
+    if type(histogram) == dict:
+        return sorted(histogram.items(), key=lambda x: x[0])
+    elif type(histogram) == list:
+        return sorted(histogram, key=lambda x: x[0])
+    
+def sort_hist_val(histogram):
+    """Sort the histogram by the values, in ascending order."""
+    if type(histogram) == dict:
+        return sorted(histogram.items(), key=lambda x: x[1], reverse=True)
+    elif type(histogram) == list:
+        return sorted(histogram, key=lambda x: x[1], reverse=True)
+
+
+def write_to_file(histogram):
+    """Write the histogram to a file."""
+    with open('sorted_source_text.txt', 'w') as file:
+        for words in histogram:
+            file.write("{0} {1}\n".format(words[0], words[1]))
+    return 0
 
 if __name__ == "__main__":
-    fish = 'one fish, two. fish! red fish blue fish +  1111 !!!!'
+    fish = 'one fish, two. fish! red fish blue fish  '
     # source_text = read_file('source_text.txt')
     source_text = fish
     
     words_list = getting_words(source_text)
     print(histogram_dict(words_list)) # histogram with dictionary
+
     # print(histogram_list(words_list))
     # print(histogram_tuple(words_list))
     # unique_words = unique_words(histogram_tuple(words_list))
     # print("Number of unique words {}".format(unique_words))
     # print(frequency('fish', histogram_dict(words_list)))
+    new_source = read_file('source_text.txt')
+    words = getting_words(new_source)
+    # print(sort_by_key(histogram_dict(words)))
+    print(sort_hist_val(histogram_dict(words[:100])))
+    write_to_file(sort_hist_val(histogram_dict(words)))
