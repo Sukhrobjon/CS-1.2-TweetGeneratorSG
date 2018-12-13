@@ -1,6 +1,5 @@
 import random
 import numpy as np
-# from words_frequency import *
 
 # this is on progress for  usage of list or tuple
 
@@ -12,7 +11,7 @@ def cumulative_weight(histogram):
 
 
 def weighted_random_choice(histogram_dict):
-    '''Gets random number according to weighting of the word'''
+    '''Gets random number according to weighting of the word occurance'''
 
     cumulative_num = 0
     sum_values = sum(histogram_dict.values())
@@ -21,28 +20,27 @@ def weighted_random_choice(histogram_dict):
     for key, value in histogram_dict.items():
         cumulative_num += value
         if cumulative_num > ran_num:
+            print("key: " + key)
             return key
+
         else:
             continue
     return histogram_dict
 
 
-def sample(histogram_dict):
+def sample(histogram_dict, iteration):
     '''Keep track of the words and returns a dictionry
     of words and the frequency as key and value pair'''
     result = {}
-
-    current_word = (weighted_random_choice(histogram_dict))
-    result[current_word] = result.get(current_word, 0) + 1
+    while iteration > 0:
+        current_word = (weighted_random_choice(histogram_dict))
+        result[current_word] = result.get(current_word, 0) + 1
+        iteration = iteration - 1
     return result
 
 
 if __name__ == '__main__':
 
-    source_text = read_file()
-    words_list = polishishing_file(source_text)
-    histogram = histogram_dict(words_list)
-    print(weighted_random_choice(histogram))
+    histogram_dict = {'one': 1, 'fish': 4, 'two': 1, 'red': 1, 'blue': 1}
     print("This should work as a dictionary")
-    # print(histogram)
-    # print(sample(histogram))
+    print(sample(histogram_dict, 10))
