@@ -20,12 +20,11 @@ def weighted_random_choice(histogram_dict):
     for key, value in histogram_dict.items():
         cumulative_num += value
         if cumulative_num > ran_num:
-            print("key: " + key)
             return key
-
         else:
             continue
-    return histogram_dict
+    # return histogram_dict
+    return key
 
 
 def sample(histogram_dict, iteration):
@@ -43,4 +42,5 @@ if __name__ == '__main__':
 
     histogram_dict = {'one': 1, 'fish': 4, 'two': 1, 'red': 1, 'blue': 1}
     print("This should work as a dictionary")
-    print(sample(histogram_dict, 10))
+    # print(sample(histogram_dict, 10))
+    print(weighted_random_choice(histogram_dict))

@@ -1,6 +1,6 @@
 from dictogram  import Dictogram
 from cleanup import read_file
-from sample import *
+from sample import weighted_random_choice
 import re
 import random
 def markov_chain(txt):
@@ -16,61 +16,44 @@ def markov_chain(txt):
             m_chain[word] = Dictogram(fol_word)
     return m_chain
 
-
-def cleanup(text):
-    """ takes in a text file, opens it and cleans text using regex. outputs
-    string of cleaned text """
-    with open(text, 'r') as uncleaned_text:
-        # print(source_text.read())
-        no_chapters = re.sub('[A-Z]{3,}', ' ', uncleaned_text.read())
-        remove_periods = re.sub('(\s\.){4,}', '', no_chapters)
-        new_text = re.sub('\*', '', remove_periods)
-    return new_text
-
-
-def tokenize(text):
-    """ 
-    takes in cleaned text as string and makes it into a list of tokens 
+def start(dictionary):
     """
-    source = text.split()
-    return source
-
-def start_word(dictionary):
-    start_tokens = []
-    for key in dictionary:
-        if key[0].islower() is True:
-            start_tokens.append(key)
-    token = random.choice(start_tokens)
+    Return a start token according to word's weight at the start of sentence
+    """
+    # creating a dict with only Capitilized words
+    start_tokens = {k: v for (k, v) in dictionary.items() if k.islower() is False}
+    token = weighted_random_choice(start_tokens)
+    # print("start tokens ", start_tokens)
     return token
 
 
-txt = read_file('source.txt')
-# print(markov_chain(txt))
-dictionary = Dictogram(txt)
-# print(dictionary)
-# m_dict = markov_chain(txt)
-# print(m_dict)
-start_word = (start_word(dictionary))
-print(start_word)
+def make_sentence_with_markov():
+    txt = read_file('source.txt')
 
-
-sentence = []
-sentence.append(start_word)
-i = 0
-while i < 9:
-    new = []
-    j = 0
-    while j<len(txt) - 1:
-        if txt[j] == start_word:
-            new.append(txt[j+1])
-
-        j += 1
-
-    m_dict = Dictogram(new)
-    start_word = random.choice(list(m_dict.keys()))
-    i += 1
+    dictionary = Dictogram(txt)
+    start_word = (start(dictionary))
+    
+    sentence = []
     sentence.append(start_word)
+    i = 0
+    while i < 15:
+        new = []
+        j = 0
+        while j<len(txt) - 1:
+            if txt[j] == start_word:
+                new.append(txt[j+1])
 
-print(m_dict)
-print(" ".join(sentence) + '.')
+            j += 1
 
+        m_dict = Dictogram(new)
+        # next_word = random.choice(list(m_dict.keys()))
+        next_word = weighted_random_choice(m_dict)
+        start_word = next_word
+        i += 1
+        sentence.append(start_word)
+
+    # print(m_dict)
+    return (" ".join(sentence) + '.')
+
+
+print(make_sentence_with_markov())
