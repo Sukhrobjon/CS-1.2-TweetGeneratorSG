@@ -27,7 +27,7 @@ def start(dictionary):
     return token
 
 
-def make_sentence_with_markov():
+def make_sentence_with_markov(sent_len):
     txt = read_file('source.txt')
 
     dictionary = Dictogram(txt)
@@ -36,7 +36,7 @@ def make_sentence_with_markov():
     sentence = []
     sentence.append(start_word)
     i = 0
-    while i < 15:
+    while i < sent_len:
         new = []
         j = 0
         while j<len(txt) - 1:
@@ -56,4 +56,4 @@ def make_sentence_with_markov():
     return (" ".join(sentence) + '.')
 
 
-print(make_sentence_with_markov())
+print(make_sentence_with_markov(10))
