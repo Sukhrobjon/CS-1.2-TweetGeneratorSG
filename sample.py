@@ -1,13 +1,4 @@
 import random
-import numpy as np
-
-# this is on progress for  usage of list or tuple
-
-
-def cumulative_weight(histogram):
-    '''Takes a list and return a cumulative sum of the list'''
-    cumulative_list = np.cumsum(histogram)
-    return cumulative_list
 
 
 def weighted_random_choice(histogram_dict):
