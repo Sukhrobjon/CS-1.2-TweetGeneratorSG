@@ -56,4 +56,4 @@ def make_sentence_with_markov(sent_len):
     return (" ".join(sentence) + '.')
 
 
-print(make_sentence_with_markov(10))
+print(make_sentence_with_markov(25))

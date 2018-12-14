@@ -1,5 +1,4 @@
 from flask import Flask
-from random_sentence import *
 from markov_chain import make_sentence_with_markov
 app = Flask(__name__)
 
