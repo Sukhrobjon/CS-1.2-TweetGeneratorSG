@@ -36,14 +36,3 @@ if __name__ == '__main__':
     # print(sample(histogram_dict, 10))
     print(weighted_random_choice(histogram_dict))
 
-
-'''
-Click==7.0
-Flask==1.0.2
-gunicorn==19.9.0
-itsdangerous==1.1.0
-Jinja2==2.10
-MarkupSafe==1.1.0
-Werkzeug==0.14.1
-
-'''
