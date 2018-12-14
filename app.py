@@ -3,8 +3,7 @@ from markov_chain import make_sentence_with_markov
 app = Flask(__name__)
 
 
-# @app.route('/')
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def hello_world():
     return make_sentence_with_markov(15)
 
