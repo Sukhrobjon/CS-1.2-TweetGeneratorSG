@@ -1,13 +1,11 @@
-'''
-    Shuffles the words without changing the original imput 
-'''
 import random
 import sys
 
-''' 
-    returns randomly shuffled list and keeps the original list order
-'''
+
 def randomize_list(original_list):
+    ''' 
+        Returns randomly shuffled list of words and keeps the original list order
+    '''
     shuffled_list = original_list[:]
     random.shuffle(shuffled_list)
     return shuffled_list
@@ -15,7 +13,8 @@ def randomize_list(original_list):
 
 if __name__ == '__main__':
     original_list = sys.argv[1:]
-    print(' '.join(randomize_list(original_list)))
+    print('Original List: ', original_list)
+    print('Shuffled List:',' '.join(randomize_list(original_list)))
 
 
 
