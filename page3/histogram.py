@@ -1,4 +1,4 @@
-import collections
+from collections import Counter
 import re
 '''
 histogram_list = [['one', 1], ['fish', 4], ['two', 1], ['red', 1], ['blue', 1]]
@@ -7,10 +7,9 @@ histogram_dictionary = [{'one': 1, 'blue': 1, 'two': 1, 'fish': 4, 'red': 1}]
 
 '''
 
-'''
-    reads the file and return a list of the words from the file
-'''
+
 def read_file(txt):
+    """Reads the file and return a list of the words from the file"""
     with open(txt) as file:
         words_list = file.read()
     return words_list
@@ -18,24 +17,24 @@ def read_file(txt):
 
 
 def getting_words(source_text):
-    '''returns only words lower case and ignore all other operations'''
+    """Returns lower cased words and ignore all other operations"""
     words = re.sub("[^a-zA-Z'\-]", " ", source_text)
     return words.lower().split()
 
 
 
-'''
-    counts the frequency of each words using counter library
-    and returns dictionry data structure as key: word, value: number
-'''
+
 def histogram(source_text):
-    count = collections.Counter(source_text)
+    """ Counts the frequency of each words using counter class from collection library
+        and returns dictionry data structure as key: word, value: number
+    """
+    count = Counter(source_text)
     return count
 
 
 
 def histogram_dict(source_text):
-    '''Counts the frequency of each words and returns dictionary'''
+    """Counts the frequency of each words and returns dictionary"""
     histogram = {}
 
     for word in source_text:
@@ -48,8 +47,7 @@ def histogram_dict(source_text):
 
 
 def histogram_list(source_text):
-    
-    '''Counts the each word frequency and returns list of list '''
+    """Counts the each word frequency and returns list of list."""
     source_text.sort()
     histogram = []
     current_word = None
@@ -63,8 +61,7 @@ def histogram_list(source_text):
 
 
 def histogram_tuple(source_text):
-    
-    '''Counts the each word frequency and returns list of list '''
+    """Counts the each word frequency and returns list of list."""
     source_text.sort()
     histogram = []
     current_word = None
@@ -76,12 +73,14 @@ def histogram_tuple(source_text):
             current_word = word
     return histogram
 
-# returns number of unique words in the source text 
+
 def unique_words(histogram):
+    """Returns number of unique words in the source text"""
     return len(histogram)
 
-# returns number of words in the dictionary type histogram, if not found returns 0  
+
 def frequency(word, histogram):
+    """Returns number of words in the dictionary type histogram, if not found returns 0"""
     if word in histogram:
         return histogram[word]
     else:
@@ -89,14 +88,14 @@ def frequency(word, histogram):
     
 
 def sort_by_key(histogram):
-    """Sort the histogram by the keys, alphabetically."""
+    """Sort the histogram by the keys, alphabetically. And returns List of tuples"""
     if type(histogram) == dict:
         return sorted(histogram.items(), key=lambda x: x[0])
     elif type(histogram) == list:
         return sorted(histogram, key=lambda x: x[0])
     
 def sort_hist_value(histogram):
-    """Sort the histogram by the values, in ascending order."""
+    """Sort the histogram by the values, in ascending order. And returns List of tuples"""
     if type(histogram) == dict:
         return sorted(histogram.items(), key=lambda x: x[1], reverse=True)
     elif type(histogram) == list:
@@ -116,15 +115,17 @@ if __name__ == "__main__":
     source_text = fish
     
     words_list = getting_words(source_text)
-    print(histogram_dict(words_list)) # histogram with dictionary
+    print(histogram_dict(words_list)) # histogram_dictionary
 
-    # print(histogram_list(words_list))
-    # print(histogram_tuple(words_list))
-    # unique_words = unique_words(histogram_tuple(words_list))
-    # print("Number of unique words {}".format(unique_words))
-    # print(frequency('fish', histogram_dict(words_list)))
-    new_source = read_file('source_text.txt')
-    words = getting_words(new_source)
-    # print(sort_by_key(histogram_dict(words)))
-    print(sort_hist_value(histogram_dict(words[:100])))
-    write_to_file(sort_hist_value(histogram_dict(words)))
+    print(histogram_list(words_list))
+    print(histogram_tuple(words_list))
+    unique_words = unique_words(histogram_tuple(words_list))
+    print("Number of unique words {}".format(unique_words))
+    print("The word is occured {} times.".format(frequency('fish', histogram_dict(words_list))))
+    print(sort_by_key(histogram_dict(words_list)))
+    print(sort_hist_value(histogram_dict(words_list)))
+    
+    
+    
+    
+    # write_to_file(sort_hist_value(histogram_dict(words_list)))

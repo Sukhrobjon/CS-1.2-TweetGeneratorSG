@@ -3,6 +3,8 @@ from cleanup import read_file
 from sample import weighted_random_choice
 import re
 import random
+
+
 def markov_chain(txt):
     m_chain = {}
     for word in txt[:-1]:
@@ -18,7 +20,7 @@ def markov_chain(txt):
 
 def start(dictionary):
     """
-    Return a start token according to word's weight at the start of sentence
+        Return a start token according to word's weight at the start of sentence
     """
     # creating a dict with only Capitilized words
     start_tokens = {k: v for (k, v) in dictionary.items() if k.islower() is False}
