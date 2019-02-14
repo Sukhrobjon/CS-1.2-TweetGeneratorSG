@@ -1,5 +1,6 @@
 import random
 import numpy as np
+import time
 
 # this is on progress for  usage of list or tuple
 def cumulative_weight(histogram):
@@ -8,7 +9,7 @@ def cumulative_weight(histogram):
     return cumulative_list
 
 def weighted_random_choice(histogram_dict):
-    '''Gets random number according to weighting of the word occurance'''
+    '''Returns random word based on frequency of the word'''
     
     cumulative_num = 0
     sum_values = sum(histogram_dict.values())
@@ -24,22 +25,19 @@ def weighted_random_choice(histogram_dict):
 
 def sample(histogram_dict, iteration):
     '''Keep track of the words and returns a dictionry
-    of words and the frequency as key and value pair'''
+    of words and the frequency'''
     result = {}
-    count = 1
     while iteration > 0:
         current_word = (weighted_random_choice(histogram_dict))
         result[current_word] = result.get(current_word, 0) + 1
-        print("key {}: {}".format(count,current_word))
+        # print("key {}: {}".format(count,current_word))
         iteration = iteration - 1
-        count += 1
     return result
 
 
 if __name__ == '__main__':
-    
+    start_time = time.time()
     histogram_dict = {'one': 1, 'fish': 4, 'two': 1, 'red': 1, 'blue': 1}
-    print("This should work as a dictionary")
-    print(sample(histogram_dict, 100))
-
+    print(sample(histogram_dict, 10000))
+    print(f"----{time.time() - start_time} SECONDS-----")
     
