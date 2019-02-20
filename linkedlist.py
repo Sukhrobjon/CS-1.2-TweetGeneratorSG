@@ -127,7 +127,6 @@ class LinkedList(object):
         or near tail or not present in the linked list
         """
 
-        # current = None
         cur_node = self.head
         prev_node = None
         while cur_node is not None:

@@ -49,8 +49,7 @@ class Listogram(list):
         for index, hist_word in enumerate(self):
             if target == hist_word[0]:
                 return index
-        else:
-            return None
+        return None
 
 
 
