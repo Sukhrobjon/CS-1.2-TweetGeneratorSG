@@ -10,12 +10,12 @@ def markov_chain(txt):
     for word in txt[:-1]:
         if word not in m_chain:
             i = 0
-            fol_word = []
+            following_words = []
             while i < len(txt) - 1:
                 if txt[i] == word:
-                    fol_word.append(txt[i+1])
+                    following_words.append(txt[i+1])
                 i += 1
-            m_chain[word] = Dictogram(fol_word)
+            m_chain[word] = Dictogram(following_words)
     return m_chain
 
 def start(dictionary):

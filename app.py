@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def create_sentence():
-    sentence = make_sentence_with_markov(15)
+    sentence = make_sentence_with_markov(20)
     return render_template("index.html", sentence=sentence)
 
 if __name__ == '__main__':
