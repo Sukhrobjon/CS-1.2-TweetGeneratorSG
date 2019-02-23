@@ -59,3 +59,5 @@ def make_sentence_with_markov(sent_len):
 
 
 print(make_sentence_with_markov(25))
+source = read_file("fish.txt")
+print(markov_chain(source))
