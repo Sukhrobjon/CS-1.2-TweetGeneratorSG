@@ -1,4 +1,4 @@
-from dictogram  import Dictogram
+from dictogram import Dictogram
 from cleanup import read_file
 from sample import weighted_random_choice
 import re
